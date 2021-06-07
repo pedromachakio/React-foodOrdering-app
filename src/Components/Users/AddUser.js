@@ -23,7 +23,7 @@ const AddUser = (props) => {
       return;
     }
 
-    const userInfo = { name: userName, age: userAge };
+    const userInfo = { key: Math.random(), name: userName, age: userAge };
 
     props.onUserAdded(userInfo);
 
@@ -35,9 +35,20 @@ const AddUser = (props) => {
     <Card className={styles.input}>
       <form onSubmit={addUserHandler}>
         <label htmlFor="name">Name</label>
-        <input type="text" id="name" value={userName} onChange={userNameHandler}></input>
+        <input
+          type="text"
+          id="name"
+          value={userName}
+          onChange={userNameHandler}
+        ></input>
         <label htmlFor="age">Age (Years)</label>
-        <input type="number" min="1" id="age" value={userAge} onChange={userAgeHandler}></input>
+        <input
+          type="number"
+          min="1"
+          id="age"
+          value={userAge}
+          onChange={userAgeHandler}
+        ></input>
         <Button type="submit">Add User</Button>
       </form>
     </Card>
