@@ -1,18 +1,15 @@
 import styles from "./InvalidInput.module.css";
 import Card from "../UI/Card";
 import Button from "../UI/Button";
-import { useState } from "react";
 
 const InvalidInput = (props) => {
-  const [isRenderingModal, setIsRenderingModal] = useState(false);
-
   const closeModalHandler = () => {
-    setIsRenderingModal(false);
+      props.onOkClick();
   };
 
   return (
     <div>
-      <div className={styles.backdrop}></div>
+      <div className={styles.backdrop} onClick={closeModalHandler}></div>
       <Card className={styles.modal}>
         <header className={styles.header}>
           <h2>{props.errorTitle}</h2>

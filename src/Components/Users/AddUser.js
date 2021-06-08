@@ -6,21 +6,25 @@ import InvalidInput from "../Modals/InvalidInput";
 
 const AddUser = (props) => {
   const [userName, setUserName] = useState("");
-
   const userNameHandler = (event) => {
     setUserName(event.target.value);
   };
 
   const [userAge, setUserAge] = useState("");
-
   const userAgeHandler = (event) => {
     setUserAge(event.target.value);
   };
+
+  const [errorPopup, setErrorPopup] = useState()
 
   const addUserHandler = (event) => {
     event.preventDefault();
 
     if (userName.trim().length === 0 || userAge <= 0) {
+      setErrorPopup({
+        errorTitle: "Invalid input",
+        errorMessage: "Please check your input fields (no empty values)"
+      })
       return;
     }
 
@@ -32,12 +36,17 @@ const AddUser = (props) => {
     setUserName("");
   };
 
+  const errorHandler = () => {
+    setErrorPopup(null) 
+  }
+
   return (
     <div>
-      <InvalidInput
-        errorTitle="Input error"
-        errorMessage="Something went wrong"
-      ></InvalidInput>
+      {errorPopup && <InvalidInput
+        errorTitle={errorPopup.errorTitle}
+        errorMessage={errorPopup.errorMessage}
+        onOkClick={errorHandler}
+      ></InvalidInput>}
       <Card className={styles.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="name">Name</label>
