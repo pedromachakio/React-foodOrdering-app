@@ -15,7 +15,7 @@ const AddUser = (props) => {
     setUserAge(event.target.value);
   };
 
-  const [errorPopup, setErrorPopup] = useState()
+  const [errorPopup, setErrorPopup] = useState();
 
   const addUserHandler = (event) => {
     event.preventDefault();
@@ -23,8 +23,8 @@ const AddUser = (props) => {
     if (userName.trim().length === 0 || userAge <= 0) {
       setErrorPopup({
         errorTitle: "Invalid input",
-        errorMessage: "Please check your input fields (no empty values)"
-      })
+        errorMessage: "Please check your input fields (no empty values)",
+      });
       return;
     }
 
@@ -37,16 +37,18 @@ const AddUser = (props) => {
   };
 
   const errorHandler = () => {
-    setErrorPopup(null) 
-  }
+    setErrorPopup(null);
+  };
 
   return (
     <div>
-      {errorPopup && <InvalidInput
-        errorTitle={errorPopup.errorTitle}
-        errorMessage={errorPopup.errorMessage}
-        onOkClick={errorHandler}
-      ></InvalidInput>}
+      {errorPopup && (
+        <InvalidInput
+          errorTitle={errorPopup.errorTitle}
+          errorMessage={errorPopup.errorMessage}
+          onOkClick={errorHandler}
+        ></InvalidInput>
+      )}
       <Card className={styles.input}>
         <form onSubmit={addUserHandler}>
           <label htmlFor="name">Name</label>

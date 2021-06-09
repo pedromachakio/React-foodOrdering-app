@@ -4,7 +4,7 @@ import Button from "../UI/Button";
 
 const InvalidInput = (props) => {
   const closeModalHandler = () => {
-      props.onOkClick();
+    props.onOkClick();
   };
 
   return (
