@@ -28,11 +28,11 @@ const DUMMY_MEALS = [
 ];
 
 const AvailableMeals = () => {
-  const MealsList = DUMMY_MEALS.map((meal) => <li>{meal.name}</li>);
+  const mealsList = DUMMY_MEALS.map((meal) => <li>{meal.name}</li>);
 
   return (
     <section className={styles.meals}>
-      <ul>{MealsList}</ul>
+      <ul>{mealsList}</ul>
     </section>
   );
 };
