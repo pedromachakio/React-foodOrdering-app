@@ -4,7 +4,14 @@ import { useContext } from "react";
 import CartContext from "../../store/cart-context";
 
 const HeaderCartButton = (props) => {
-  const ctx = useContext(CartContext);
+  const cartCtx = useContext(CartContext);
+
+  const numberOfCartItems = cartCtx.items.reduce(
+    (accumulator, currentValue) => {
+      return accumulator + currentValue.amount;
+    },
+    0 // Calling reduce() on an empty array without an initialValue will throw a TypeError.
+  ); // transformar o array de itens num único valor
 
   function cartClickHandler() {
     props.onClick();
@@ -16,7 +23,7 @@ const HeaderCartButton = (props) => {
         <CartIcon></CartIcon>
       </span>
       <span>Your Cart</span>
-      <span className={styles.badge}>{ctx.totalAmount}</span>
+      <span className={styles.badge}>{numberOfCartItems}</span>
     </button>
   );
 };
