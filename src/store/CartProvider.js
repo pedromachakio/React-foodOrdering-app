@@ -25,11 +25,11 @@ const CartProvider = (props) => {
   );
 
   const addItemToCartHandler = (item) => {
-    dispatchCartAction({ type: "ADD_ITEM", payload: item });
+    dispatchCartAction({ type: "ADD_ITEM", item: item });
   };
 
   const removeItemFromCartHandler = (id) => {
-    dispatchCartAction({ type: "REMOVE_ITEM", payload: id });
+    dispatchCartAction({ type: "REMOVE_ITEM", id: id });
   };
 
   const cartContext = {
